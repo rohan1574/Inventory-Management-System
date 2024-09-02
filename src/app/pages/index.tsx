@@ -1,13 +1,10 @@
-// src/app/page.tsx
-
-"use client"; // This directive marks the component as a Client Component
-
-import AddProductForm from '../app/components/AddProductForm';
-import ProductList from '../app/components/ProductList';
-import Notification from '../app/components/Notification';
+"use client"
+import AddProductForm from '../components/AddProductForm';
+import ProductList from '../components/ProductList';
+import Notification from '../components/Notification';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { notifyLowStock } from '../app/utils/notificationUtils';
+import { notifyLowStock } from '../utils/notificationUtils';
 
 const Home = () => {
   const dispatch = useDispatch();
