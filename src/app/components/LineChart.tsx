@@ -1,10 +1,13 @@
 // src/app/components/LineChart.tsx
 
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend } from 'chart.js';
+"use client";
+
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
+import { Line } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend } from 'chart.js';
 
+// Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend);
 
 const LineChart = () => {
@@ -14,19 +17,18 @@ const LineChart = () => {
     labels: products.map(product => product.name),
     datasets: [
       {
-        label: 'Product Quantity Over Time',
+        label: 'Product Quantity',
         data: products.map(product => product.quantity),
-        fill: false,
-        borderColor: 'rgba(75, 192, 192, 1)',
-        tension: 0.1,
+        borderColor: '#42A5F5',
+        backgroundColor: 'rgba(66, 165, 245, 0.2)',
+        fill: true,
       },
     ],
   };
 
   return (
-    <div>
-      <h2 className="text-xl font-bold">Product Quantity Trend</h2>
-      <Line data={data} />
+    <div className="chart-container">
+      <Line data={data} options={{ responsive: true }} />
     </div>
   );
 };

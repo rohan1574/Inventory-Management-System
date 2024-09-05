@@ -1,10 +1,13 @@
 // src/app/components/BarChart.tsx
 
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+"use client"; // Ensure this is a Client Component
+
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
+// Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const BarChart = () => {
@@ -24,9 +27,8 @@ const BarChart = () => {
   };
 
   return (
-    <div>
-      <h2 className="text-xl font-bold">Product Quantities</h2>
-      <Bar data={data} />
+    <div className="chart-container">
+      <Bar data={data} options={{ responsive: true }} />
     </div>
   );
 };
